@@ -2,11 +2,10 @@
 const SITE_CONFIG = {
   reservationUrl: '',
   reservationUrlsByDate: { '14': '', '15': '' },
-  instagramUrl: '',
-  xUrl: '',
-  email: '',
+  instagramUrl: 'https://www.instagram.com/kanzanjipj_shizuokauniversity?stkn=MWNpdDczOWJsMWN1cQ%3D%3D&utm_source=qr',
+  email: 'kanzanjipj@gmail.com',
   publicUrl: '',
-  images: { hero: 'assets/hero.jpg', coffee: 'assets/coffee.jpg', potato: 'assets/potato.jpg', pudding: 'assets/pudding.jpg' }
+  images: { hero: 'assets/main.jpg', coffee: 'assets/coffee.jpg', potato: 'assets/potato.jpg', pudding: 'assets/pudding.jpg' }
 };
 
 function safeWebUrl(value) {
@@ -17,7 +16,7 @@ function safeWebUrl(value) {
 const bookingLink = document.querySelector('#booking-link');
 function updateReservation() {
   const day = document.querySelector('input[name="date"]:checked').value;
-  document.querySelector('#selected-date').textContent = `11月${day}日（${day === '14' ? '土' : '日'}）／ 開催時間 9:00〜15:00`;
+  document.querySelector('#selected-day').textContent = `11月${day}日（${day === '14' ? '土' : '日'}）`;
   const url = safeWebUrl(SITE_CONFIG.reservationUrlsByDate[day] || SITE_CONFIG.reservationUrl);
   bookingLink.replaceChildren(document.createTextNode(url ? '予約枠・人数・詳細を確認する ' : '予約ページは準備中 '));
   const arrow = document.createElement('span'); arrow.textContent = '↗'; arrow.setAttribute('aria-hidden', 'true'); bookingLink.append(arrow);
@@ -34,11 +33,9 @@ updateReservation();
 document.querySelectorAll('[data-contact]').forEach(link => {
   const type = link.dataset.contact;
   const email = SITE_CONFIG.email.trim();
-  const url = type === 'email' ? (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? `mailto:${email}` : '') : safeWebUrl(type === 'instagram' ? SITE_CONFIG.instagramUrl : SITE_CONFIG.xUrl);
+  const url = type === 'email' ? (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? `mailto:${email}` : '') : safeWebUrl(SITE_CONFIG.instagramUrl);
   if (url) { link.href = url; link.removeAttribute('aria-disabled'); if (type !== 'email') { link.target = '_blank'; link.rel = 'noopener noreferrer'; } }
 });
-const missingContacts = [...document.querySelectorAll('[data-contact][aria-disabled="true"]')];
-document.querySelector('#contact-note').textContent = missingContacts.length ? '未設定のお問い合わせ先は準備中です。' : '開催情報・お問い合わせはこちらから。';
 
 document.querySelectorAll('a[aria-disabled="true"]').forEach(link => {
   link.addEventListener('click', event => { if (link.getAttribute('aria-disabled') === 'true') event.preventDefault(); });
@@ -48,7 +45,7 @@ Object.entries(SITE_CONFIG.images).forEach(([key, path]) => {
   if (!path) return;
   const slot = document.querySelector(`[data-image="${key}"]`);
   const img = new Image();
-  img.onload = () => { slot.style.backgroundImage = `url(${JSON.stringify(img.src)})`; slot.classList.add('has-image'); slot.setAttribute('aria-label', {hero:'湖上カフェで友達と過ごすイメージ（AI生成）',coffee:'コーヒーのイメージ（AI生成）',potato:'ポテトのイメージ（AI生成）',pudding:'プリンのイメージ（AI生成）'}[key]); };
+  img.onload = () => { slot.style.backgroundImage = `url(${JSON.stringify(img.src)})`; slot.classList.add('has-image'); slot.setAttribute('aria-label', {hero:'湖上カフェで友達と過ごすイメージ',coffee:'コーヒーのイメージ',potato:'ポテトのイメージ',pudding:'プリンのイメージ'}[key]); };
   img.src = path;
 });
 
