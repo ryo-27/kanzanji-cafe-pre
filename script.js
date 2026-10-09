@@ -63,3 +63,46 @@ document.querySelector('#share-button').addEventListener('click', async () => {
   const area = document.querySelector('#share-text'); area.value = `${text}${url ? '\n'+url : '\n（公開後のページURLを添えてください）'}`;
   document.querySelector('#share-dialog').showModal(); area.focus(); area.select();
 });
+
+// Reveal each block once as it enters the viewport.
+function setupScrollReveal() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+  const targets = document.querySelectorAll([
+    '.experience .section-heading', '.experience-intro', '.experience-grid article',
+    '.six-illustration', '.six-copy', '.menu-heading', '.menu-card', '.menu-note',
+    '.info-left', '.info-right', '.reservation-inner > div',
+    '.faq-section > div', '.about-mark', '.about-copy'
+  ].join(', '));
+
+  const reveal = element => {
+    element.classList.add('is-visible');
+    observer.unobserve(element);
+  };
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) reveal(entry.target); });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+
+  targets.forEach(element => {
+    if (element.matches('.experience-grid article, .menu-card')) {
+      const index = [...element.parentElement.children].indexOf(element);
+      element.style.setProperty('--reveal-delay', `${index * 90}ms`);
+    }
+    element.classList.add('scroll-reveal');
+    if (element.getBoundingClientRect().top < window.innerHeight - 40) {
+      reveal(element);
+    } else {
+      observer.observe(element);
+    }
+    element.addEventListener('focusin', () => reveal(element), { once: true });
+  });
+
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) {
+      targets.forEach(reveal);
+      observer.disconnect();
+    }
+  });
+}
+setupScrollReveal();
