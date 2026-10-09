@@ -180,3 +180,21 @@ body{background:var(--cream)}
  .experience-grid .feature-number{top:22px;left:0;width:30px;height:30px}
  .six-panel{border-radius:24px 38px 25px 33px}
 }
+
+/* Requested copy and mobile layout refinements. */
+.mobile-break{display:none}
+.photo-caption .image-disclaimer{font-size:11px;letter-spacing:0}
+.ticker-track,.ticker-group{display:flex;align-items:center;gap:47px;flex-shrink:0}
+.ticker-wave{font-size:25px;line-height:1}
+.ticker-group:last-child .ticker-wave{display:none}
+@media(max-width:700px){
+ .mobile-break{display:block}
+ .desktop-only{display:none}
+ .experience-grid article,.experience-grid article:first-child{padding-left:0}
+ .ticker{padding-left:0;padding-right:0}
+ .ticker-track{width:max-content;gap:0;animation:lake-ticker 24s linear infinite}
+ .ticker-group{gap:30px;padding-right:30px}
+ .ticker-group:last-child .ticker-wave{display:block}
+}
+@keyframes lake-ticker{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
