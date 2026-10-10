@@ -45,7 +45,7 @@ Object.entries(SITE_CONFIG.images).forEach(([key, path]) => {
   if (!path) return;
   const slot = document.querySelector(`[data-image="${key}"]`);
   const img = new Image();
-  img.onload = () => { slot.style.backgroundImage = `url(${JSON.stringify(img.src)})`; slot.classList.add('has-image'); slot.setAttribute('aria-label', {hero:'湖上カフェで友達と過ごすイメージ',coffee:'コーヒーのイメージ',potato:'ポテトのイメージ',pudding:'プリンのイメージ'}[key]); };
+  img.onload = () => { slot.style.backgroundImage = `url(${JSON.stringify(img.src)})`; slot.classList.add('has-image'); slot.setAttribute('aria-label', {hero:'湖上カフェで大切な人と過ごすイメージ',coffee:'コーヒーのイメージ',potato:'ポテトのイメージ',pudding:'プリンのイメージ'}[key]); };
   img.src = path;
 });
 
@@ -54,8 +54,8 @@ document.querySelector('#share-button').addEventListener('click', async () => {
   const publicUrl = safeWebUrl(SITE_CONFIG.publicUrl);
   const isLocal = location.protocol === 'file:' || ['localhost','127.0.0.1','[::1]'].includes(location.hostname);
   const url = publicUrl || (isLocal ? '' : location.href.split('#')[0]);
-  const text = '11/14・15、舘山寺で2日間限定の湖上カフェ！友達と浜名湖の上でコーヒーとおやつを楽しもう。';
-  const data = { title: 'LAKE FLOAT CAFÉ in Kanzanji', text, ...(url ? { url } : {}) };
+  const text = '湖上で過ごす、特別な体験。11/14・15、舘山寺で2日間限定の「Lake Float Cafe in Kanzanji」。大切な人と浜名湖の上で特別な時間を。9:00〜15:00、各回1時間制。予備日：11/21・22（天候による対応の詳細は決まり次第ご案内します）。';
+  const data = { title: 'Lake Float Cafe in Kanzanji', text, ...(url ? { url } : {}) };
   try {
     if (navigator.share && url) { await navigator.share(data); status.textContent = 'シェア画面を開きました。'; return; }
     if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(`${text}${url ? '\n'+url : ''}`); status.textContent = url ? '紹介文とページURLをコピーしました。' : '紹介文をコピーしました。公開後にページURLも添えてください。'; return; }

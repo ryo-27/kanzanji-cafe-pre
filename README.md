@@ -1,4 +1,4 @@
-# LAKE FLOAT CAFÉ in Kanzanji
+# Lake Float Cafe in Kanzanji
 
 HTML・CSS・JavaScriptのみで動く、湖上カフェイベントのサイトです。淡いレイクブルーに更新し、AI生成画像4点を挿入しています。ライブラリのインストールやビルドは不要です。
 
