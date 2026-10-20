@@ -222,3 +222,10 @@ body{background:var(--cream)}
 }
 
 .hero-backup{margin-top:10px;font-size:12px;line-height:1.8;color:var(--muted);max-width:100%;padding-left:1em;text-indent:-1em}
+
+/* Participation price, alongside the schedule and before booking choices. */
+.hero-price{font-size:14px;margin-top:8px;line-height:1.8}
+.booking-card .booking-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:0 0 22px;line-height:1.5}
+.price-label{width:100%;font-size:12px;color:var(--muted)}
+.price-amount{font-family:var(--serif);font-size:30px;letter-spacing:.02em}
+.price-fee{font-size:13px}
