@@ -1,7 +1,6 @@
 /* 公開前に確定したURL・画像を設定してください。空欄では準備中と表示します。 */
 const SITE_CONFIG = {
-  reservationUrl: '',
-  reservationUrlsByDate: { '14': '', '15': '' },
+  reservationUrl: 'https://t-dv.com/LakeFloatCafeinKanzanji',
   instagramUrl: 'https://www.instagram.com/kanzanjipj_shizuokauniversity?stkn=MWNpdDczOWJsMWN1cQ%3D%3D&utm_source=qr',
   email: 'kanzanjipj@gmail.com',
   publicUrl: '',
@@ -14,21 +13,17 @@ function safeWebUrl(value) {
 }
 
 const bookingLink = document.querySelector('#booking-link');
-function updateReservation() {
-  const day = document.querySelector('input[name="date"]:checked').value;
-  document.querySelector('#selected-day').textContent = `11月${day}日（${day === '14' ? '土' : '日'}）`;
-  const url = safeWebUrl(SITE_CONFIG.reservationUrlsByDate[day] || SITE_CONFIG.reservationUrl);
-  bookingLink.replaceChildren(document.createTextNode(url ? '予約枠・人数・詳細を確認する ' : '予約ページは準備中 '));
+function setupReservation() {
+  const url = safeWebUrl(SITE_CONFIG.reservationUrl);
+  bookingLink.replaceChildren(document.createTextNode(url ? 'TicketDiveで予約する ' : '予約ページは準備中 '));
   const arrow = document.createElement('span'); arrow.textContent = '↗'; arrow.setAttribute('aria-hidden', 'true'); bookingLink.append(arrow);
   if (url) {
     bookingLink.href = url; bookingLink.target = '_blank'; bookingLink.rel = 'noopener noreferrer'; bookingLink.removeAttribute('aria-disabled');
   } else {
     bookingLink.removeAttribute('href'); bookingLink.setAttribute('aria-disabled', 'true');
   }
-  document.querySelector('#booking-status').textContent = url ? '外部の予約ページが開きます。希望日・時間・人数を確認してお申し込みください。' : '予約URLが決まり次第、こちらからご案内します。';
 }
-document.querySelectorAll('input[name="date"]').forEach(input => input.addEventListener('change', updateReservation));
-updateReservation();
+setupReservation();
 
 document.querySelectorAll('[data-contact]').forEach(link => {
   const type = link.dataset.contact;

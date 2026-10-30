@@ -229,3 +229,10 @@ body{background:var(--cream)}
 .price-label{width:100%;font-size:12px;color:var(--muted)}
 .price-amount{font-family:var(--serif);font-size:30px;letter-spacing:.02em}
 .price-fee{font-size:13px}
+
+/* Show participation conditions before visitors choose and purchase tickets. */
+.booking-conditions{font-size:14px;line-height:1.8;margin:0 0 22px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.booking-conditions p+p{margin-top:10px}
+.booking-conditions strong{font-weight:600}
+
+.booking-schedule{font-size:14px;line-height:1.8;margin:0 0 15px}
