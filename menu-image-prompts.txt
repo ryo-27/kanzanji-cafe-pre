@@ -1,0 +1,8 @@
+Generated with the built-in image_gen tool. Both are illustrative menu images, not official product photographs.
+
+Shared style reference: assets/pudding.jpg. Match its square framing, rustic brown wooden lakeside cafe table, cream speckled ceramic plate, soft autumn natural morning light, pale-blue lake and distant autumn hills with shallow depth of field, subtle maple leaves and cup at far left. Preserve the reference color grading, grain, exposure and lens. Food in the lower central 60%, scenery in the upper 40%. No text, logos or packaging.
+
+Sweet potato: replace pudding/caramel with 5–6 thick irregular cut Japanese sweet-potato chunks, purple-red skin and naturally golden-yellow flesh. Neutral serving, no frying crust, no fries, no ice cream, no sauce or steam. Preparation method is undecided.
+
+Chestnut pie: replace pudding/caramel with two small round chestnut-filled puff pastries, one whole and one cut in half showing dense beige chestnut filling and pieces. Use Shunkado's official Daichi no Pie Waguri product photograph only as the food-shape reference; retain its round dome shape and flaky golden-brown crust. Do not copy its green background or packaging. Do not depict a lattice tart, croissant or mont blanc.
+Product reference: https://www.shunkado.co.jp/sweets/waguri/_bikkuri_lunch.php

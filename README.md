@@ -1,6 +1,6 @@
 # Lake Float Cafe in Kanzanji
 
-HTML・CSS・JavaScriptのみで動く、湖上カフェイベントのサイトです。淡いレイクブルーに更新し、AI生成画像4点を挿入しています。ライブラリのインストールやビルドは不要です。
+HTML・CSS・JavaScriptのみで動く、湖上カフェイベントのサイトです。淡いレイクブルーに更新し、イメージ画像と提供素材を掲載しています。ライブラリのインストールやビルドは不要です。
 
 ## ファイル
 
@@ -12,7 +12,7 @@ HTML・CSS・JavaScriptのみで動く、湖上カフェイベントのサイト
 - `assets/cafe-logo.png`、`assets/favicon.png`：ロゴ・favicon
 - `assets/lake-ripples.svg`：波の装飾
 - `assets/six-float.jpg`：Sixフロートの写真
-- `assets/main.jpg`、`assets/coffee.jpg`、`assets/potato.jpg`、`assets/pudding.jpg`：メイン・メニュー画像
+- `assets/main.jpg`、`assets/coffee.jpg`、`assets/chestnut-pie.jpg`、`assets/sweet-potato.jpg`、`assets/pudding.jpg`：メイン・メニュー画像
 
 ## 表示
 
@@ -36,7 +36,8 @@ const SITE_CONFIG = {
   images: {
     hero: 'assets/main.jpg',
     coffee: 'assets/coffee.jpg',
-    potato: 'assets/potato.jpg',
+    chestnutPie: 'assets/chestnut-pie.jpg',
+    sweetPotato: 'assets/sweet-potato.jpg',
     pudding: 'assets/pudding.jpg'
   }
 };

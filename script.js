@@ -4,7 +4,7 @@ const SITE_CONFIG = {
   instagramUrl: 'https://www.instagram.com/kanzanjipj_shizuokauniversity?stkn=MWNpdDczOWJsMWN1cQ%3D%3D&utm_source=qr',
   email: 'kanzanjipj@gmail.com',
   publicUrl: '',
-  images: { hero: 'assets/main.jpg', coffee: 'assets/coffee.jpg', potato: 'assets/potato.jpg', pudding: 'assets/pudding.jpg' }
+  images: { hero: 'assets/main.jpg', coffee: 'assets/coffee.jpg', pudding: 'assets/pudding.jpg', chestnutPie: 'assets/chestnut-pie.jpg', sweetPotato: 'assets/sweet-potato.jpg' }
 };
 
 function safeWebUrl(value) {
@@ -39,8 +39,9 @@ document.querySelectorAll('a[aria-disabled="true"]').forEach(link => {
 Object.entries(SITE_CONFIG.images).forEach(([key, path]) => {
   if (!path) return;
   const slot = document.querySelector(`[data-image="${key}"]`);
+  if (!slot) return;
   const img = new Image();
-  img.onload = () => { slot.style.backgroundImage = `url(${JSON.stringify(img.src)})`; slot.classList.add('has-image'); slot.setAttribute('aria-label', {hero:'湖上カフェで大切な人と過ごすイメージ',coffee:'コーヒーのイメージ',potato:'ポテトのイメージ',pudding:'プリンのイメージ'}[key]); };
+  img.onload = () => { slot.style.backgroundImage = `url(${JSON.stringify(img.src)})`; slot.classList.add('has-image'); slot.setAttribute('aria-label', {hero:'湖上カフェで大切な人と過ごすイメージ',coffee:'コーヒーのイメージ',pudding:'プリンのイメージ',chestnutPie:'和栗パイのイメージ',sweetPotato:'カットしたさつまいものイメージ'}[key]); };
   img.src = path;
 });
 
