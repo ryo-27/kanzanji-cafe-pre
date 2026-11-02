@@ -265,3 +265,24 @@ body{background:var(--cream)}
  html{scroll-behavior:auto}
  .button,.button>span,.text-link>span,.nav-cta>span,.menu-card,.six-photo{transition:none}
 }
+
+/* The coffee name and description also serve as the disclosure control. */
+.menu-grid{align-items:start}
+.menu-card.coffee-card{display:block}
+.coffee-story{border:0;min-width:0}
+.coffee-story>summary{display:grid;grid-template-columns:minmax(0,1fr) 24px;gap:0 10px;padding:0;color:inherit;align-items:center}
+.coffee-story .menu-image{grid-column:1/-1;grid-row:auto}
+.coffee-story .menu-name{grid-column:1;grid-row:2}
+.coffee-summary-text{grid-column:1;grid-row:3;font-size:16px;margin-top:6px;line-height:1.9}
+.coffee-story>summary>.coffee-toggle{grid-column:2;grid-row:2/4;font-size:22px;line-height:1;text-align:center;transition:transform .2s ease}
+.coffee-story-body{padding:14px 0 0;margin-top:14px;border-top:1px solid var(--line);font-size:14px;line-height:2;overflow-wrap:anywhere}
+@media(min-width:381px) and (max-width:700px){
+ .coffee-story>summary{grid-template-columns:110px minmax(0,1fr) 22px;column-gap:16px}
+ .coffee-story .menu-image{grid-column:1;grid-row:1/3}
+ .coffee-story .menu-name{grid-column:2;grid-row:1}
+ .coffee-summary-text{grid-column:2;grid-row:2;margin-top:5px;align-self:start}
+ .coffee-story>summary>.coffee-toggle{grid-column:3;grid-row:1/3}
+}
+@media(max-width:380px){.coffee-story .menu-name{margin-top:12px}}
+@media(prefers-reduced-motion:no-preference){.coffee-story[open] .coffee-story-body{animation:coffee-story-in .25s ease-out}}
+@keyframes coffee-story-in{from{opacity:0}to{opacity:1}}
