@@ -9,8 +9,10 @@ HTML・CSS・JavaScriptのみで動く、湖上カフェイベントのサイト
 - `script.js`：予約URL・問い合わせ先の設定、シェア、画像差し替え
 - `構成案.md`：目的、対象、構成、心理・使いやすさの設計意図、未確定情報
 - `画像生成プロンプト.md`：画像枠4点の生成プロンプト
-- `assets/favicon.svg`：波をモチーフにしたアイコン
-- `assets/hero.jpg`、`assets/coffee.jpg`、`assets/potato.jpg`、`assets/pudding.jpg`：AI生成のイメージ画像
+- `assets/cafe-logo.png`、`assets/favicon.png`：ロゴ・favicon
+- `assets/lake-ripples.svg`：波の装飾
+- `assets/six-float.jpg`：Sixフロートの写真
+- `assets/main.jpg`、`assets/coffee.jpg`、`assets/potato.jpg`、`assets/pudding.jpg`：メイン・メニュー画像
 
 ## 表示
 
@@ -32,7 +34,7 @@ const SITE_CONFIG = {
   email: '実際のメールアドレス',
   publicUrl: 'https://公開後のサイトURL',
   images: {
-    hero: 'assets/hero.jpg',
+    hero: 'assets/main.jpg',
     coffee: 'assets/coffee.jpg',
     potato: 'assets/potato.jpg',
     pudding: 'assets/pudding.jpg'
