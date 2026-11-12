@@ -4,7 +4,7 @@ const SITE_CONFIG = {
   instagramUrl: 'https://www.instagram.com/kanzanjipj_shizuokauniversity?stkn=MWNpdDczOWJsMWN1cQ%3D%3D&utm_source=qr',
   email: 'kanzanjipj@gmail.com',
   publicUrl: '',
-  images: { hero: 'assets/main.jpg', coffee: 'assets/coffee.jpg', pudding: 'assets/pudding.jpg', chestnutPie: 'assets/chestnut-pie.jpg', sweetPotato: 'assets/sweet-potato.jpg' }
+  images: { hero: 'assets/main.jpg' }
 };
 
 function safeWebUrl(value) {
@@ -50,7 +50,7 @@ document.querySelector('#share-button').addEventListener('click', async () => {
   const publicUrl = safeWebUrl(SITE_CONFIG.publicUrl);
   const isLocal = location.protocol === 'file:' || ['localhost','127.0.0.1','[::1]'].includes(location.hostname);
   const url = publicUrl || (isLocal ? '' : location.href.split('#')[0]);
-  const text = '湖上で過ごす、特別な体験。11/14・15、舘山寺で2日間限定の「Lake Float Cafe in Kanzanji」。大切な人と浜名湖の上で特別な時間を。9:00〜15:00、各回1時間制。予備日：11/21・22（天候による対応の詳細は決まり次第ご案内します）。';
+  const text = '湖上で過ごす、特別な体験。11/14・15、舘山寺で2日間限定の「Lake Float Cafe in Kanzanji」。大切な人と浜名湖の上で特別な時間を。1日4回（9:00・10:30・12:00・13:30開始）、各回1時間制。雨天・強風時は翌週の同じ曜日・時間帯へ振替。';
   const data = { title: 'Lake Float Cafe in Kanzanji', text, ...(url ? { url } : {}) };
   try {
     if (navigator.share && url) { await navigator.share(data); status.textContent = 'シェア画面を開きました。'; return; }
