@@ -12,7 +12,8 @@ HTML・CSS・JavaScriptのみで動く、湖上カフェイベントのサイト
 - `assets/cafe-logo.png`、`assets/favicon.png`：ロゴ・favicon
 - `assets/lake-ripples.svg`：波の装飾
 - `assets/six-float.jpg`：Sixフロートの写真
-- `assets/main.jpg`、`assets/coffee.jpg`、`assets/chestnut-pie.jpg`、`assets/sweet-potato.jpg`、`assets/pudding.jpg`：メイン・メニュー画像
+- `assets/main.jpg`：メインのイメージ画像
+- `assets/coffee-provider.png`、`assets/yuagari-pudding.jpg`、`assets/waguri-pie-product.jpg`、`assets/norimono-sable.jpg`、`assets/chilled-sweet-potato.jpg`：確定メニューの提供素材（HTMLから直接読込）
 
 ## 表示
 
@@ -33,13 +34,7 @@ const SITE_CONFIG = {
   xUrl: 'https://x.com/実際のアカウント',
   email: '実際のメールアドレス',
   publicUrl: 'https://公開後のサイトURL',
-  images: {
-    hero: 'assets/main.jpg',
-    coffee: 'assets/coffee.jpg',
-    chestnutPie: 'assets/chestnut-pie.jpg',
-    sweetPotato: 'assets/sweet-potato.jpg',
-    pudding: 'assets/pudding.jpg'
-  }
+  images: { hero: 'assets/main.jpg' }
 };
 ```
 
@@ -50,3 +45,21 @@ const SITE_CONFIG = {
 このサイト自体では空き枠取得、決済、個人情報の収集、予約受付を行いません。実際の予約は設定した外部ページで行います。
 
 公開前の確認事項は `構成案.md` の「公開前に確認・追記する情報」を参照してください。
+
+## 開催判断後の公開用ZIP
+
+共通ソースを編集後、次のコマンドで再生成できます。外部ライブラリは不要です。
+
+```sh
+python3 scripts/build_release.py
+```
+
+- `releases/lake-float-cafe-normal.zip`：11月14日（土）・15日（日）の通常開催を告知する版。
+- `releases/lake-float-cafe-sunday-postponed.zip`：14日（土）は通常開催、15日（日）を22日（日）の同じ時間帯へ延期する版。
+- 各ZIPと同名の展開済みディレクトリで、公開前にプレビューできます。
+
+現在の共通ソースのトップは11月13日（金）正午の開催判断待ちです。ZIP内の2版は判断後に使う告知のため、決定前に公開しないでください。ZIPの作成やローカルプレビューだけでは公開されません。展開した `index.html`・`styles.css`・`script.js`・`assets/` を公開元へ上書きし、GitHub Pagesのデプロイ成功を確認します。詳しくはZIP内の `公開手順.txt` を参照してください。
+
+日時はトップのお知らせ・メイン日程・開催情報・予約欄・モバイル下部・メタ情報・シェア文に反映済みです。CSS/JSには版ごとの更新識別子を付け、アーカイブ内ファイルのSHA-256を `release-manifest.json` に記録します。
+
+TicketDiveの情報やチケットの振替・購入者への連絡は別途更新が必要です。生成スクリプトはZIP内のHTML構造・必要素材・ファイル整合性を検証します。
